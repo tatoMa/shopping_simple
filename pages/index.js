@@ -1,21 +1,20 @@
-import Head from "next/head";
-import Image from "next/image";
+import LoginButton from "../src/components/LoginButton";
 import ProductItem from "../src/components/ProductItem";
-import styles from "../styles/Home.module.css";
+import { fetchDataFromApi } from "../src/util/fetch";
 
-export default function Home({ data }) {
-  return <>{data.length > 0 && <ProductItem products={data} />}</>;
+export default function Home({ productsData }) {
+  return (
+    <>{productsData.length > 0 && <ProductItem products={productsData} />}</>
+  );
 }
 
 export async function getStaticProps(context) {
-  let data;
-  try {
-    const res = await fetch(`http://localhost:3000/api/products`);
-    data = await res.json();
-  } catch (error) {}
+  const PRODUCTS_URL = `${process.env.BASE_URL}/api/products`;
+  const productsData = await fetchDataFromApi(PRODUCTS_URL);
+
   return {
     props: {
-      data: data.data,
+      productsData,
     },
   };
 }

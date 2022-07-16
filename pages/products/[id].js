@@ -1,7 +1,7 @@
 import ProductDetail from "../../src/components/ProductDetail";
 import Checkout from "../../src/components/Checkout";
 
-const Product = ({ data }) => {
+const Product = (data) => {
   return (
     <>
       <ProductDetail product={data.data} />
