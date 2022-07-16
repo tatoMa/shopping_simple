@@ -2,7 +2,7 @@ const devEnv = process.env.NODE_ENV !== "production";
 
 export const BASE_URL = devEnv
   ? "http://localhost:3000"
-  : "http://localhost:3000";
+  : process.env.NEXT_PUBLIC_VERCEL_URL;
 
 export async function fetchDataFromApi(url) {
   const response = await fetch(url);
