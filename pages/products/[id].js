@@ -2,11 +2,11 @@ import ProductDetail from "../../src/components/ProductDetail";
 import Checkout from "../../src/components/Checkout";
 import { BASE_URL, fetchDataFromApi } from "../../src/util/fetch";
 
-const Product = (data) => {
+const Product = ({ data }) => {
   return (
     <>
-      <ProductDetail product={data.data} />
-      <Checkout />
+      <ProductDetail product={data} />
+      <Checkout total={data.price} />
     </>
   );
 };
@@ -18,6 +18,6 @@ export async function getServerSideProps({ query }) {
   const PRODUCT_URL_BY_ID = `${BASE_URL}/api/products/${id}`;
   const productData = await fetchDataFromApi(PRODUCT_URL_BY_ID);
   return {
-    props: { data: productData }, // will be passed to the page component as props
+    props: { data: productData },
   };
 }

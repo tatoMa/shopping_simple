@@ -6,7 +6,7 @@ import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 );
-export default function PreviewPage() {
+export default function PreviewPage({ total }) {
   React.useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
@@ -22,7 +22,7 @@ export default function PreviewPage() {
   }, []);
 
   return (
-    <form action="/api/checkout_sessions" method="POST">
+    <form action={`/api/checkout_sessions?total=${total}`} method="POST">
       <section className="mt-16 mx-auto">
         <button className="mx-auto w-64 " type="submit" role="link">
           Checkout

@@ -1,14 +1,20 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
+  const { total } = req.query;
   if (req.method === "POST") {
     try {
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create({
         line_items: [
           {
-            // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-            price: "price_1LLhM6Hot7ImNz1InABzNZkb",
+            price_data: {
+              currency: "usd",
+              product_data: {
+                name: "TATO Simple Shopping",
+              },
+              unit_amount: total * 100,
+            },
             quantity: 1,
           },
         ],

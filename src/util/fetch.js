@@ -2,7 +2,7 @@ const devEnv = process.env.NODE_ENV !== "production";
 
 export const BASE_URL = devEnv
   ? "http://localhost:3000"
-  : "https://shopping-simple.vercel.app";
+  : "http://localhost:3000";
 
 export async function fetchDataFromApi(url) {
   const response = await fetch(url);
