@@ -1,7 +1,5 @@
-import { BASE_URL } from "../../src/util/fetch";
-import LoginButton from "../src/components/LoginButton";
-import ProductItem from "../src/components/ProductItem";
-import { fetchDataFromApi } from "../src/util/fetch";
+import ProductItem from "../../src/components/ProductItem";
+import { BASE_URL, fetchDataFromApi } from "../../src/util/fetch";
 
 export default function Home({ productsData }) {
   return (

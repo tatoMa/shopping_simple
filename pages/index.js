@@ -1,4 +1,3 @@
-import LoginButton from "../src/components/LoginButton";
 import ProductItem from "../src/components/ProductItem";
 import { BASE_URL, fetchDataFromApi } from "../src/util/fetch";
 
