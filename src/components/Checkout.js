@@ -23,8 +23,8 @@ export default function PreviewPage() {
 
   return (
     <form action="/api/checkout_sessions" method="POST">
-      <section className="mx-auto mt-16">
-        <button className=" w-64 " type="submit" role="link">
+      <section className="mt-16 mx-auto">
+        <button className="mx-auto w-64 " type="submit" role="link">
           Checkout
         </button>
       </section>
