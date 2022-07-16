@@ -11,6 +11,7 @@ export async function getStaticProps(context) {
   const PRODUCTS_URL = `${BASE_URL}/api/products`;
   console.log("====url====", PRODUCTS_URL);
   const productsData = await fetchDataFromApi(PRODUCTS_URL);
+  console.log(productsData);
   return {
     props: {
       productsData,
