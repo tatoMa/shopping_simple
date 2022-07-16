@@ -1,5 +1,5 @@
 import ProductItem from "../src/components/ProductItem";
-// import { BASE_URL, fetchDataFromApi } from "../src/util/fetch";
+import { BASE_URL, fetchDataFromApi } from "../src/util/fetch";
 
 export default function Home({ productsData }) {
   return (
@@ -8,11 +8,13 @@ export default function Home({ productsData }) {
 }
 
 export async function getStaticProps(context) {
-  const res = await fetch("https://shopping-simple.vercel.app/api/products");
-  const data = await res.json();
+  const PRODUCTS_URL = `${BASE_URL}/api/products`;
+  console.log("====url====", PRODUCTS_URL);
+  const productsData = await fetchDataFromApi(PRODUCTS_URL);
+  console.log("Product fetched ", productsData);
   return {
     props: {
-      productsData: data,
+      productsData,
     },
   };
 }
