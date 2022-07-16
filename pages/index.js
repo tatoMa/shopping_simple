@@ -8,7 +8,7 @@ export default function Home({ productsData }) {
 }
 
 export async function getStaticProps(context) {
-  const res = await fetch("https://fakestoreapi.com/products");
+  const res = await fetch("https://shopping-simple.vercel.app/api/products");
   const data = await res.json();
   return {
     props: {
