@@ -1,5 +1,5 @@
 import ProductItem from "../src/components/ProductItem";
-import { BASE_URL, fetchDataFromApi } from "../src/util/fetch";
+// import { BASE_URL, fetchDataFromApi } from "../src/util/fetch";
 
 export default function Home({ productsData }) {
   return (
@@ -8,13 +8,11 @@ export default function Home({ productsData }) {
 }
 
 export async function getStaticProps(context) {
-  const PRODUCTS_URL = `${BASE_URL}/api/products`;
-  console.log("====url====", PRODUCTS_URL);
-  const productsData = await fetchDataFromApi(PRODUCTS_URL);
-  console.log("Product fetched :", productsData);
+  const res = await fetch("https://fakestoreapi.com/products");
+  const data = await res.json();
   return {
     props: {
-      productsData,
+      productsData: data,
     },
   };
 }

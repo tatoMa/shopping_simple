@@ -1,6 +1,5 @@
 import ProductDetail from "../../src/components/ProductDetail";
 import Checkout from "../../src/components/Checkout";
-import { BASE_URL, fetchDataFromApi } from "../../src/util/fetch";
 
 const Product = ({ data }) => {
   return (
@@ -14,9 +13,9 @@ const Product = ({ data }) => {
 export default Product;
 export async function getServerSideProps({ query }) {
   let { id } = query;
-  const PRODUCT_URL_BY_ID = `${BASE_URL}/api/products/${id}`;
-  const productData = await fetchDataFromApi(PRODUCT_URL_BY_ID);
+  const res = await fetch("https://fakestoreapi.com/products/" + id);
+  const data = await res.json();
   return {
-    props: { data: productData },
+    props: { data: data },
   };
 }
